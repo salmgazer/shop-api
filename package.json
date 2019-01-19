@@ -1,6 +1,6 @@
 {
   "name": "inventory-api",
-  "description": "Nodejs API for invetory web app",
+  "description": "Nodejs API for invetory web app.",
   "version": "0.0.0",
   "homepage": "",
   "main": "src",
