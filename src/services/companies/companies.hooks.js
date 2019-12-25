@@ -1,24 +1,23 @@
-const auth = require('@feathersjs/authentication');
-const local = require('@feathersjs/authentication-local');
-const uuidv4 = require('uuid/v4');
 
+const uuidv4 = require('uuid/v4');
 const itemId = async context => {
   context.data.id = uuidv4();
 
+  console.log(context.data);
+
   return context;
 };
+
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [
-      // local.hooks.hashPassword({ passwordField: 'password' })
-    ],
+    create: [],
     update: [],
     patch: [],
-    remove: [],
+    remove: []
   },
 
   after: {
@@ -28,7 +27,7 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: [],
+    remove: []
   },
 
   error: {
@@ -38,6 +37,6 @@ module.exports = {
     create: [],
     update: [],
     patch: [],
-    remove: [],
-  },
+    remove: []
+  }
 };

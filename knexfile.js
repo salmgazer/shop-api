@@ -1,22 +1,54 @@
+const {types} = require('pg');
+require('dotenv').config();
+
+types.setTypeParser(1082, (val) => val);
+
 module.exports = {
-  development: {
+  local: {
     client: 'pg',
     connection: process.env.POSTGRESQLCONNSTR_DB,
     migrations: {
       directory: `${__dirname}/db/migrations`,
     },
     seeds: {
-      directory: `${__dirname}/db/seeds/development`,
+      directory: `${__dirname}/db/seeds`,
+    },
+  },
+  development: {
+    debug: true,
+    client: 'pg',
+    connection: process.env.POSTGRESQLCONNSTR_DB,
+    migrations: {
+      directory: `${__dirname}/db/migrations`,
+    },
+    seeds: {
+      directory: `${__dirname}/db/seeds`,
     },
   },
   test: {
+    debug: false,
     client: 'pg',
-    connection: process.env.POSTGRESQLCONNSTR_DB,
+    connection: process.env.POSTGRESQLCONNSTR_TEST_DB,
     migrations: {
       directory: `${__dirname}/db/migrations`,
     },
     seeds: {
-      directory: `${__dirname}/db/seeds/test`,
+      directory: `${__dirname}/db/seeds`,
+    },
+  },
+  beta: {
+    client: 'pg',
+    connection: process.env.POSTGRESQLCONNSTR_DB,
+    pool: {
+      min: 2,
+      max: 10,
+      softIdleTimeoutMillis: 60000,
+    },
+    migrations: {
+      directory: `${__dirname}/db/migrations`,
+    },
+    seeds: {
+      directory: `${__dirname}/db/seeds`,
     },
   },
   qa: {
@@ -31,12 +63,12 @@ module.exports = {
       directory: `${__dirname}/db/migrations`,
     },
     seeds: {
-      directory: `${__dirname}/db/seeds/test`,
+      directory: `${__dirname}/db/seeds`,
     },
   },
   production: {
     client: 'pg',
-    connection: process.env.CUSTOMCONNSTR_DB,
+    connection: process.env.POSTGRESQLCONNSTR_DB,
     pool: {
       min: 2,
       max: 20,
@@ -46,7 +78,7 @@ module.exports = {
       directory: `${__dirname}/db/migrations`,
     },
     seeds: {
-      directory: `${__dirname}/db/seeds/test`,
+      directory: `${__dirname}/db/seeds`,
     },
   },
 };

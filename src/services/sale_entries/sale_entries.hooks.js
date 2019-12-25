@@ -1,9 +1,8 @@
-const auth = require('@feathersjs/authentication');
-const updateSellingPrice = require('../../hooks/update-selling-price');
+
 
 module.exports = {
   before: {
-    all: [auth.hooks.authenticate('jwt')],
+    all: [],
     find: [],
     get: [],
     create: [],
@@ -16,12 +15,8 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [
-      (context) => updateSellingPrice(context)
-    ],
-    update: [
-      (context) => updateSellingPrice(context)
-    ],
+    create: [],
+    update: [],
     patch: [],
     remove: []
   },

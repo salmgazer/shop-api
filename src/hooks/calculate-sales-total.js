@@ -9,6 +9,8 @@ async function calculateSalesTotal(context) {
     let totalSellingPrice = 0.00;
     
     const salesObjects = updatedContext.data.products;
+    // const customer = await knexRaw('customers').where({ id: updatedContext.data.customerId }).first();
+    // console.log(customer);
     for (let i = 0; i < salesObjects.length; i++) {
       const salesObject = salesObjects[i];
       const product = await knexRaw('products').where(salesObject.products).first();
