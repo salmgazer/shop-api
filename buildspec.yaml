@@ -19,7 +19,7 @@ phases:
       # Install runtime dependencies
       - npm install --production
       # - npm test
-      # - npm run migrate
+      - npm run migrate
 
       - echo Build completed on `date`
 artifacts:
