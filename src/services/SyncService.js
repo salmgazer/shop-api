@@ -104,7 +104,8 @@ class SyncService {
     // if rows have been deleted
     try {
       if (tableChanges.deleted.length > 0) {
-        await knexRaw(tablename).delete().whereIn('id', tableChanges.deleted);
+        await knexRaw(tablename).update({ deleted: true }).whereIn('id', tableChanges.deleted);
+        // await knexRaw(tablename).delete().whereIn('id', tableChanges.deleted);
       }
     } catch (error) {
       console.error(error);
