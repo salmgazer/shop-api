@@ -49,7 +49,8 @@ const tables = [
   'expense_categories',
   'expenses',
   'settings',
-  'product_prices'
+  'product_prices',
+  'installments'
 ];
 
 app.use('/pull_changes', async (req, res) => {
