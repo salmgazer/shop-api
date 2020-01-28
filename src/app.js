@@ -53,8 +53,12 @@ const tables = [
   'installments'
 ];
 
+
+app.use('/ping', async (req, res) => {
+  res.status(200).json({ message: 'pong' });
+});
+
 app.use('/pull_changes', async (req, res) => {
-  console.log("+++++++++++++ About to send changes to client ++++++++++++++++");
   let lastPulledAt = req.query.last_pulled_at;
   if (lastPulledAt) {
     lastPulledAt = parseInt(lastPulledAt, 10);
@@ -73,7 +77,6 @@ app.use('/pull_changes', async (req, res) => {
 
 
 app.post('/push_changes', async (req, res) => {
-  console.log("============== About to apply changes from client ==============");
   const lastPulledAt = req.query.last_pulled_at;
   const changes = req.body;
 
