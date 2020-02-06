@@ -1,6 +1,6 @@
 module.exports = {
   host: 'localhost',
-  port: process.env.PORT,
+  port: process.env.PORT || '3500',
   public: '../public/',
   paginate: {
     default: 1000
@@ -12,7 +12,7 @@ module.exports = {
       max: 10,
       softIdleTimeoutMillis: 60000,
     },
-    connection: process.env.POSTGRESQLCONNSTR_DB,
+    connection: process.env.POSTGRESQLCONNSTR_DB || 'postgres://localhost/shop_api',
     migrations: {
       directory: `${__dirname}/db/migrations`,
     },
