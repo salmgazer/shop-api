@@ -1,6 +1,6 @@
 module.exports = {
   host: process.env.HOST,
-  port: process.env.PORT,
+  port: process.env.PORT || '3500',
   public: '../public/',
   paginate: {
     default: 1000
@@ -13,10 +13,10 @@ module.exports = {
       softIdleTimeoutMillis: 60000,
     },
     connection: {
-      host : process.env.DB_HOST,
-      user : process.env.DB_USER,
-      password : process.env.DB_PASSWORD,
-      database : process.env.DB_NAME
+      host : process.env.DB_HOST || 'localhost',
+      user : process.env.DB_USER || 'postgres',
+      password : process.env.DB_PASSWORD || '',
+      database : process.env.DB_NAME | 'shop_api'
     },
     migrations: {
       directory: `${__dirname}/db/migrations`,

@@ -18,10 +18,10 @@ module.exports = {
     debug: true,
     client: 'pg',
     connection: {
-      host : process.env.DB_HOST,
-      user : process.env.DB_USER,
-      password : process.env.DB_PASSWORD,
-      database : process.env.DB_NAME
+      host : process.env.DB_HOST || 'localhost',
+      user : process.env.DB_USER || 'postgres',
+      password : process.env.DB_PASSWORD || '',
+      database : process.env.DB_NAME | 'shop_api'
     },
     migrations: {
       directory: `${__dirname}/db/migrations`,
@@ -33,7 +33,7 @@ module.exports = {
   test: {
     debug: false,
     client: 'pg',
-    connection: process.env.POSTGRESQLCONNSTR_TEST_DB,
+    connection: process.env.POSTGRESQLCONNSTR_TEST_DB || 'postgres://localhost/shop_api_test',
     migrations: {
       directory: `${__dirname}/db/migrations`,
     },
