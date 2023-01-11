@@ -46,7 +46,7 @@
     "feathers-authentication-local": "^0.4.4",
     "feathers-knex": "^4.0.0",
     "helmet": "^3.15.0",
-    "knex": "^0.16.3",
+    "knex": "^2.4.0",
     "pg": "^7.7.1",
     "serve-favicon": "^2.5.0",
     "uuid": "^3.3.3",
